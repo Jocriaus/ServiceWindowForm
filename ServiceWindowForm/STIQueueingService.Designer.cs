@@ -25,7 +25,6 @@
         private void InitializeComponent() {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(STIQueueingService));
             this.label1 = new System.Windows.Forms.Label();
-            this.nowServingListBx = new System.Windows.Forms.ListBox();
             this.upcomingListBx = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -37,6 +36,12 @@
             this.label8 = new System.Windows.Forms.Label();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.button1 = new System.Windows.Forms.Button();
+            this.Cashier_text = new System.Windows.Forms.Label();
+            this.window2_text = new System.Windows.Forms.Label();
+            this.window1_text = new System.Windows.Forms.Label();
+            this.bookshop_text = new System.Windows.Forms.Label();
+            this.DSA_Office_text = new System.Windows.Forms.Label();
+            this.admission_text = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -54,31 +59,18 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "STI QUEUEING SERVICE";
             // 
-            // nowServingListBx
-            // 
-            this.nowServingListBx.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.nowServingListBx.Font = new System.Drawing.Font("Rockwell", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nowServingListBx.FormattingEnabled = true;
-            this.nowServingListBx.ItemHeight = 68;
-            this.nowServingListBx.Items.AddRange(new object[] {
-            "LIST"});
-            this.nowServingListBx.Location = new System.Drawing.Point(156, 265);
-            this.nowServingListBx.Name = "nowServingListBx";
-            this.nowServingListBx.Size = new System.Drawing.Size(725, 408);
-            this.nowServingListBx.TabIndex = 1;
-            // 
             // upcomingListBx
             // 
             this.upcomingListBx.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.upcomingListBx.ColumnWidth = 1;
-            this.upcomingListBx.Font = new System.Drawing.Font("Rockwell", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.upcomingListBx.Font = new System.Drawing.Font("Rockwell", 32F);
             this.upcomingListBx.FormattingEnabled = true;
-            this.upcomingListBx.ItemHeight = 68;
+            this.upcomingListBx.ItemHeight = 59;
             this.upcomingListBx.Items.AddRange(new object[] {
             "LIST"});
-            this.upcomingListBx.Location = new System.Drawing.Point(1320, 155);
+            this.upcomingListBx.Location = new System.Drawing.Point(1302, 155);
             this.upcomingListBx.Name = "upcomingListBx";
-            this.upcomingListBx.Size = new System.Drawing.Size(407, 612);
+            this.upcomingListBx.Size = new System.Drawing.Size(464, 649);
             this.upcomingListBx.TabIndex = 2;
             // 
             // label2
@@ -182,9 +174,14 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.bookshop_text);
+            this.splitContainer1.Panel2.Controls.Add(this.DSA_Office_text);
+            this.splitContainer1.Panel2.Controls.Add(this.admission_text);
+            this.splitContainer1.Panel2.Controls.Add(this.Cashier_text);
+            this.splitContainer1.Panel2.Controls.Add(this.window2_text);
+            this.splitContainer1.Panel2.Controls.Add(this.window1_text);
             this.splitContainer1.Panel2.Controls.Add(this.upcomingListBx);
             this.splitContainer1.Panel2.Controls.Add(this.label8);
-            this.splitContainer1.Panel2.Controls.Add(this.nowServingListBx);
             this.splitContainer1.Panel2.Controls.Add(this.label7);
             this.splitContainer1.Panel2.Controls.Add(this.label2);
             this.splitContainer1.Panel2.Controls.Add(this.label6);
@@ -192,7 +189,7 @@
             this.splitContainer1.Panel2.Controls.Add(this.label5);
             this.splitContainer1.Panel2.Controls.Add(this.label4);
             this.splitContainer1.Size = new System.Drawing.Size(1902, 1033);
-            this.splitContainer1.SplitterDistance = 167;
+            this.splitContainer1.SplitterDistance = 174;
             this.splitContainer1.TabIndex = 14;
             // 
             // button1
@@ -208,6 +205,66 @@
             this.button1.Text = "Close";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // Cashier_text
+            // 
+            this.Cashier_text.AutoSize = true;
+            this.Cashier_text.Font = new System.Drawing.Font("Rockwell", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Cashier_text.Location = new System.Drawing.Point(159, 425);
+            this.Cashier_text.Name = "Cashier_text";
+            this.Cashier_text.Size = new System.Drawing.Size(653, 88);
+            this.Cashier_text.TabIndex = 16;
+            this.Cashier_text.Text = "              - Cashier";
+            // 
+            // window2_text
+            // 
+            this.window2_text.AutoSize = true;
+            this.window2_text.Font = new System.Drawing.Font("Rockwell", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.window2_text.Location = new System.Drawing.Point(158, 327);
+            this.window2_text.Name = "window2_text";
+            this.window2_text.Size = new System.Drawing.Size(735, 88);
+            this.window2_text.TabIndex = 15;
+            this.window2_text.Text = "              - Window 2";
+            // 
+            // window1_text
+            // 
+            this.window1_text.AutoSize = true;
+            this.window1_text.Font = new System.Drawing.Font("Rockwell", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.window1_text.Location = new System.Drawing.Point(159, 220);
+            this.window1_text.Name = "window1_text";
+            this.window1_text.Size = new System.Drawing.Size(735, 88);
+            this.window1_text.TabIndex = 14;
+            this.window1_text.Text = "              - Window 1";
+            // 
+            // bookshop_text
+            // 
+            this.bookshop_text.AutoSize = true;
+            this.bookshop_text.Font = new System.Drawing.Font("Rockwell", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bookshop_text.Location = new System.Drawing.Point(159, 717);
+            this.bookshop_text.Name = "bookshop_text";
+            this.bookshop_text.Size = new System.Drawing.Size(754, 88);
+            this.bookshop_text.TabIndex = 19;
+            this.bookshop_text.Text = "              - Book Shop";
+            // 
+            // DSA_Office_text
+            // 
+            this.DSA_Office_text.AutoSize = true;
+            this.DSA_Office_text.Font = new System.Drawing.Font("Rockwell", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DSA_Office_text.Location = new System.Drawing.Point(158, 619);
+            this.DSA_Office_text.Name = "DSA_Office_text";
+            this.DSA_Office_text.Size = new System.Drawing.Size(762, 88);
+            this.DSA_Office_text.TabIndex = 18;
+            this.DSA_Office_text.Text = "              - DSA Office";
+            // 
+            // admission_text
+            // 
+            this.admission_text.AutoSize = true;
+            this.admission_text.Font = new System.Drawing.Font("Rockwell", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.admission_text.Location = new System.Drawing.Point(158, 523);
+            this.admission_text.Name = "admission_text";
+            this.admission_text.Size = new System.Drawing.Size(752, 88);
+            this.admission_text.TabIndex = 17;
+            this.admission_text.Text = "              - Admission";
             // 
             // STIQueueingService
             // 
@@ -232,7 +289,6 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ListBox nowServingListBx;
         private System.Windows.Forms.ListBox upcomingListBx;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -244,5 +300,11 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label window1_text;
+        private System.Windows.Forms.Label Cashier_text;
+        private System.Windows.Forms.Label window2_text;
+        private System.Windows.Forms.Label bookshop_text;
+        private System.Windows.Forms.Label DSA_Office_text;
+        private System.Windows.Forms.Label admission_text;
     }
 }

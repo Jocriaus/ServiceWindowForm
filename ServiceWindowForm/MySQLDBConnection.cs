@@ -150,10 +150,10 @@ namespace Window_Queue {
             var output = retrieveCurrentQueueNumWin1Command.ExecuteScalar();
             if (!(output is DBNull)) {
                 string ticketNum = Convert.ToString(retrieveCurrentQueueNumWin1Command.ExecuteScalar());
-                return ticketNum + "                            1";
+                return ticketNum + " - Window 1";
             }
             else {
-                return "";
+                return " ";
             }
         }
 
@@ -163,10 +163,10 @@ namespace Window_Queue {
             var output = retrieveCurrentQueueNumWin2Command.ExecuteScalar();
             if (!(output is DBNull)) {
                 string ticketNum = Convert.ToString(retrieveCurrentQueueNumWin2Command.ExecuteScalar());
-                return ticketNum + "                            2";
+                return ticketNum + " - Window 2";
             }
             else {
-                return "";
+                return " ";
             }
         }
 
@@ -177,25 +177,25 @@ namespace Window_Queue {
             var output = retrieveCurrentQueueNumCashierCommand.ExecuteScalar();
             if (!(output is DBNull)) {
                 string ticketNum = Convert.ToString(retrieveCurrentQueueNumCashierCommand.ExecuteScalar());
-                return ticketNum + "                 Cashier";
+                return ticketNum + " - Cashier";
             }
             else {
-                return "";
+                return " ";
             }
         }
 
 
 
-        public string retrieveCurrentQueueNumAdmin() {
-            string retrieveCurrentQueueNumAdminQuery = "SELECT MIN(TicketNo) FROM client INNER JOIN user ON client.UserID = user.UserID Where Windows = 'Administrator' AND Status = 'Ongoing' AND TicketNo IS NOT NULL; ";
-            MySqlCommand retrieveCurrentQueueNumAdminCommand = new MySqlCommand(retrieveCurrentQueueNumAdminQuery, connection);
-            var output = retrieveCurrentQueueNumAdminCommand.ExecuteScalar();
+        public string retrieveCurrentQueueNumAdmission() {
+            string retrieveCurrentQueueNumAdmissionQuery = "SELECT MIN(TicketNo) FROM client INNER JOIN user ON client.UserID = user.UserID Where Windows = 'Admission' AND Status = 'Ongoing' AND TicketNo IS NOT NULL; ";
+            MySqlCommand retrieveCurrentQueueNumAdmissionCommand = new MySqlCommand(retrieveCurrentQueueNumAdmissionQuery, connection);
+            var output = retrieveCurrentQueueNumAdmissionCommand.ExecuteScalar();
             if (!(output is DBNull)) {
-                string ticketNum = Convert.ToString(retrieveCurrentQueueNumAdminCommand.ExecuteScalar());
-                return ticketNum + "      Administrator";
+                string ticketNum = Convert.ToString(retrieveCurrentQueueNumAdmissionCommand.ExecuteScalar());
+                return ticketNum + " - Admission";
             }
             else {
-                return "";
+                return " ";
             }
         }
 
@@ -206,21 +206,35 @@ namespace Window_Queue {
             var output = retrieveCurrentQueueNumDSACommand.ExecuteScalar();
             if (!(output is DBNull)) {
                 string ticketNum = Convert.ToString(retrieveCurrentQueueNumDSACommand.ExecuteScalar());
-                return ticketNum + "           DSA Office";
+                return ticketNum + " - DSA Office";
             }
             else {
-                return "";
+                return " ";
             }
         }
 
-        public List<string> retrieveUpcomingTenQueue(string window1, string window2, string Cashier, string Admin, string DSA) {
-            string retrieveUpcomingTenQueueQuery = "SELECT TicketNo FROM client Where Status = 'Ongoing' AND TicketNo NOT IN (@win1, @win2, @cash , @admin , @dsa) LIMIT 10; ";
+        public string retrieveCurrentQueueNumBookshop() {
+            string retrieveCurrentQueueNumBookshopQuery = "SELECT MIN(TicketNo) FROM client INNER JOIN user ON client.UserID = user.UserID Where Windows = 'Bookshop' AND Status = 'Ongoing' AND TicketNo IS NOT NULL; ";
+            MySqlCommand retrieveCurrentQueueNumBookshopCommand = new MySqlCommand(retrieveCurrentQueueNumBookshopQuery, connection);
+            var output = retrieveCurrentQueueNumBookshopCommand.ExecuteScalar();
+            if (!(output is DBNull)) {
+                string ticketNum = Convert.ToString(retrieveCurrentQueueNumBookshopCommand.ExecuteScalar());
+                return ticketNum + " - Bookshop";
+            }
+            else {
+                return " ";
+            }
+        }
+
+        public List<string> retrieveUpcomingTenQueue(string window1, string window2, string Cashier, string Admission, string DSA, string bookShop) {
+            string retrieveUpcomingTenQueueQuery = "SELECT TicketNo FROM client Where Status = 'Ongoing' AND TicketNo NOT IN (@win1, @win2, @cash , @admission , @dsa, @bs) LIMIT 10; ";
             MySqlCommand retrieveUpcomingTenQueueCommand = new MySqlCommand(retrieveUpcomingTenQueueQuery, connection);
             retrieveUpcomingTenQueueCommand.Parameters.AddWithValue("win1", window1);
             retrieveUpcomingTenQueueCommand.Parameters.AddWithValue("win2", window2);
             retrieveUpcomingTenQueueCommand.Parameters.AddWithValue("cash", Cashier);
-            retrieveUpcomingTenQueueCommand.Parameters.AddWithValue("admin", Admin);
+            retrieveUpcomingTenQueueCommand.Parameters.AddWithValue("admission", Admission);
             retrieveUpcomingTenQueueCommand.Parameters.AddWithValue("dsa", DSA);
+            retrieveUpcomingTenQueueCommand.Parameters.AddWithValue("bs", bookShop);
             MySqlDataReader reader = retrieveUpcomingTenQueueCommand.ExecuteReader();
             List<string> win = new List<string>();
             while (reader.Read()) {

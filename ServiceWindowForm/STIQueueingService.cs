@@ -21,7 +21,8 @@ namespace ServiceWindowForm {
     public partial class STIQueueingService : Form {
 
         private MySQLDBConnection connectionSQL;
-        public string one, two, cash, admin, dsa;
+        public string one, two, cash, admission, dsa,bs;
+
 
         // These are the now serving queue
         /*   public string window3QueueingNum;
@@ -46,7 +47,12 @@ namespace ServiceWindowForm {
             this.WindowState = FormWindowState.Maximized;
             this.StartPosition = FormStartPosition.CenterScreen;
             this.MaximizeBox = false;
-
+            one = "";
+            two = "";
+            cash = "";
+            admission = "";
+            dsa = "";
+            bs = "";
         }
 
 
@@ -54,29 +60,36 @@ namespace ServiceWindowForm {
 
 
             // ----------------Now Serving List Box -----------------
-            nowServingListBx.Items.Clear();
-            if (!(connectionSQL.retrieveCurrentQueueNumWin1() == "")) {
-                nowServingListBx.Items.Add(connectionSQL.retrieveCurrentQueueNumWin1());
+            if (!(connectionSQL.retrieveCurrentQueueNumWin1() == " ")) {
+                window1_text.Text = connectionSQL.retrieveCurrentQueueNumWin1();
                 one = connectionSQL.retrieveCurrentQueueNumWin1();
             }
-            if (!(connectionSQL.retrieveCurrentQueueNumWin2() == "")) {
-                nowServingListBx.Items.Add(connectionSQL.retrieveCurrentQueueNumWin2());
+            if (!(connectionSQL.retrieveCurrentQueueNumWin2() == " ")) {
+                window2_text.Text = connectionSQL.retrieveCurrentQueueNumWin2();
                 two = connectionSQL.retrieveCurrentQueueNumWin2();
             }
-            if (!(connectionSQL.retrieveCurrentQueueNumCashier() == "")) {
-                nowServingListBx.Items.Add(connectionSQL.retrieveCurrentQueueNumCashier());
+            if (!(connectionSQL.retrieveCurrentQueueNumCashier() == " ")) {
+                Cashier_text.Text = connectionSQL.retrieveCurrentQueueNumCashier();
                 cash = connectionSQL.retrieveCurrentQueueNumCashier();
+                Console.WriteLine(connectionSQL.retrieveCurrentQueueNumCashier());
             }
-            if (!(connectionSQL.retrieveCurrentQueueNumAdmin() == "")) {
-                nowServingListBx.Items.Add(connectionSQL.retrieveCurrentQueueNumAdmin());
-                admin = connectionSQL.retrieveCurrentQueueNumAdmin();
+            if (!(connectionSQL.retrieveCurrentQueueNumAdmission() == " ")) {
+                admission_text.Text = connectionSQL.retrieveCurrentQueueNumAdmission();
+                admission = connectionSQL.retrieveCurrentQueueNumAdmission();
             }
-            if (!(connectionSQL.retrieveCurrentQueueNumDSA() == "")) {
-                nowServingListBx.Items.Add(connectionSQL.retrieveCurrentQueueNumDSA());
+            if (!(connectionSQL.retrieveCurrentQueueNumDSA() == " ")) {
+                DSA_Office_text.Text = connectionSQL.retrieveCurrentQueueNumDSA();
                 dsa = connectionSQL.retrieveCurrentQueueNumDSA();
+                
+            }
+            if (!(connectionSQL.retrieveCurrentQueueNumBookshop() == " ")) {
+                bookshop_text.Text = connectionSQL.retrieveCurrentQueueNumBookshop();
+                bs = connectionSQL.retrieveCurrentQueueNumBookshop();
+
             }
             //-------------------------------------------------------
-            upcomingListBx.DataSource = connectionSQL.retrieveUpcomingTenQueue(one, two, cash, admin, dsa);
+            Console.WriteLine(connectionSQL.retrieveUpcomingTenQueue(one, two, cash, admission, dsa,bs));
+            upcomingListBx.DataSource = connectionSQL.retrieveUpcomingTenQueue(one, two, cash, admission, dsa,bs);
         }
 
 
