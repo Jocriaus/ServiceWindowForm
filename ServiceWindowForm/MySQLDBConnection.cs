@@ -150,11 +150,13 @@ namespace Window_Queue {
                 "AND c.TicketNo IS NOT NULL " +
                 "GROUP BY u.Windows " +
                 "ORDER BY u.Windows;";
-            Dictionary<string, string> nowServing = new Dictionary<string, string>();
+            // Match window names like the database does (case-insensitive, trailing spaces ignored),
+            // so "window 2" or "Bookshop " still finds its label.
+            Dictionary<string, string> nowServing = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
             using (MySqlCommand nowServingCommand = new MySqlCommand(nowServingQuery, connection))
             using (MySqlDataReader reader = nowServingCommand.ExecuteReader()) {
                 while (reader.Read()) {
-                    nowServing[Convert.ToString(reader["Windows"])] = Convert.ToString(reader["TicketNo"]);
+                    nowServing[Convert.ToString(reader["Windows"]).Trim()] = Convert.ToString(reader["TicketNo"]);
                 }
             }
             return nowServing;

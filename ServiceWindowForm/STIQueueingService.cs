@@ -18,14 +18,7 @@ namespace ServiceWindowForm {
 
         public STIQueueingService() {
             InitializeComponent();
-            nowServingLabels = new Dictionary<string, Label> {
-                { "Window 1", window1_text },
-                { "Window 2", window2_text },
-                { "Cashier", Cashier_text },
-                { "Admission", admission_text },
-                { "DSA Office", DSA_Office_text },
-                { "Bookshop", bookshop_text },
-            };
+            InitNowServingLabels();
             connectionSQL = new MySQLDBConnection();
 
             // Refresh the screen every second.
@@ -38,6 +31,17 @@ namespace ServiceWindowForm {
             this.WindowState = FormWindowState.Maximized;
             this.StartPosition = FormStartPosition.CenterScreen;
             this.MaximizeBox = false;
+        }
+
+        private void InitNowServingLabels() {
+            nowServingLabels = new Dictionary<string, Label> {
+                { "Window 1", window1_text },
+                { "Window 2", window2_text },
+                { "Cashier", Cashier_text },
+                { "Admission", admission_text },
+                { "DSA Office", DSA_Office_text },
+                { "Bookshop", bookshop_text },
+            };
         }
 
         /// <summary>
